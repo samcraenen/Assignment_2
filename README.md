@@ -88,7 +88,7 @@ docker push acrscraenen03.azurecr.io/mycrudapp:latest
 After the ACR deploy, we're going to focus on setting up our virtual network and it's subnets.
 
 this is the network.bicep file you need for this.
-
+```
 param vnetName string
 param location string
 param aciSubnetName string
@@ -151,7 +151,7 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
 
 output vnetId string = vnet.id
 
-
+```
 the reason we have 2 subnets is because of the application gateway later on. 
 so we have:
 - 1 subnet for the ACI 
@@ -166,7 +166,7 @@ az network vnet subnet list --resource-group MyResourceGroup --vnet-name vnetscr
 Next up is the container instance.
 
 This is the code in my aci.bicep file:
-
+```
 param name string
 param location string
 param vnetName string
@@ -231,7 +231,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2024-11-01-preview' = 
 
 
 output privateIP string = aci.properties.ipAddress.ip
-
+```
 
 # Verification
 You can run the following command to verify that you're deployment was successful.
@@ -245,7 +245,7 @@ Lastly is the application gateway.
 This will make sure that our application is publicly available.
 
 this is our appgateway.bicep file:
-
+```
 param location string
 param vnetName string
 param subnetName string
@@ -347,7 +347,7 @@ resource appGateway 'Microsoft.Network/applicationGateways@2024-05-01' = {
 }
 
 output publicIP string = publicIP.properties.ipAddress
-
+```
 
 # Verification
 You can run the following command to verify that you're deployment was successful.
@@ -364,7 +364,7 @@ Which is also the second way to verify that the deployment was successful.
 This is the core file of the deployment. This is where everything get's connected.
 
 This is the content of the main.bicep file:
-
+```
 targetScope = 'resourceGroup'
 param location string = resourceGroup().location
 param aciName string = 'aciscraenen03'
@@ -410,7 +410,7 @@ module appGateway './modules/appgateway.bicep' = {
 
 output appGatewayPublicIP string = appGateway.outputs.publicIP
 output aciPrivateIP string = aci.outputs.privateIP
-
+```
 ## Deploy
 to succesfully deploy the whole application, you need to run the following command
 
