@@ -15,6 +15,7 @@ This document provides a step-by-step guide on how to automate a basic CRUD appl
 ## Diagram
 We start with making our Diagram. This will give you a visual view on what you need to make later on.
 
+you can find the diagram code here: /diagram/assignment_2_diagram.drawio
 
 ## Installation
 **Azure CLI**: for windows, start by going to this website: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?pivots=msi and click on either the 32bit or 64bit download button.
