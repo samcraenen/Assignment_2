@@ -49,7 +49,7 @@ az group create --name MyResourceGroup --location westeurope
 After you've made the resource group, we're going to continue with our ACR.
 
 This is the acr.bicep file we're going to use:
-
+```
 resource acr 'Microsoft.ContainerRegistry/registries@2024-11-01-preview' = {
   name: 'acrscraenen03'
   location: resourceGroup().location
@@ -69,7 +69,7 @@ resource token 'Microsoft.ContainerRegistry/registries/tokens@2024-11-01-preview
     
   }
 }
-
+```
 # ACR deploy
 To deploy your ACR, run the following command
 
