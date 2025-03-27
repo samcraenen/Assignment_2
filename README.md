@@ -24,6 +24,7 @@ you can find the diagram code here: /diagram/assignment_2_diagram.drawio
 This way you can just install the bicep extension.
 
 ## File structure
+```
 .
 └── Project folder/
     ├── README.MD
@@ -36,7 +37,7 @@ This way you can just install the bicep extension.
     │   ├── aci.bicep
     │   └── appgateway.bicep
     └── main.bicep
-
+```
 ## Resource Group
 Start by making a standard Resource group.
 You can do this by running the following command in your terminal.
