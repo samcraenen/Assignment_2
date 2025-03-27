@@ -1,7 +1,9 @@
+// parameters overnemen van main.bicep
 param vnetName string
 param location string
 param aciSubnetName string
 param appGatewaySubnetName string
+// virtual network resource toevoegen
 resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: vnetName
   location: location
@@ -9,6 +11,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
     addressSpace: {
       addressPrefixes: ['10.0.0.0/16']
     }
+    // 2 subnets, een voor de aci en een voor de app gateway
     subnets: [
       {
         name: aciSubnetName
@@ -33,6 +36,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
     ]
   }
 }
+// network security group resource toevoegen
 resource nsg 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
   name: 'aci-nsg'
   location: location

@@ -1,12 +1,15 @@
+// parameters van main.bicep
 param name string
 param location string
 param vnetName string
 param subnetName string
 param acrName 'acrscraenen03'
+// container instance resource
 resource aci 'Microsoft.ContainerInstance/containerGroups@2024-11-01-preview' = {
   name: name
   location: location
   properties: {
+    // subnet toevoegen aan container instance
     subnetIds: [
       {
         id: resourceId('Microsoft.Network/virtualNetworks/subnets', vnetName, subnetName)
@@ -43,6 +46,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2024-11-01-preview' = 
       ]
       
     }
+    // acr token meegeven
     imageRegistryCredentials: [
       {
         server: '${acrName}.azurecr.io'
@@ -50,6 +54,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2024-11-01-preview' = 
         password: 'zjV+dCMvLoF9vSHiPpu+/SltdnZz138JZA7LjfHY8a+ACRBgqKiP'
       }
     ]
+    // azure monitoring toevoegen
     diagnostics: {
       logAnalytics: {
         workspaceId: '1ffe2e20-0051-4222-ad1d-4d7a14e8bd69'

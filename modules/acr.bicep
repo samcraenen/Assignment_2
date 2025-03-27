@@ -1,3 +1,4 @@
+// acr resource toevoegen
 resource acr 'Microsoft.ContainerRegistry/registries@2024-11-01-preview' = {
   name: 'acrscraenen03'
   location: resourceGroup().location
@@ -8,6 +9,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2024-11-01-preview' = {
     adminUserEnabled: true
   }
 }
+// pull token toevoegen
 resource token 'Microsoft.ContainerRegistry/registries/tokens@2024-11-01-preview' = {
   parent: acr
   name: 'pull-token'
